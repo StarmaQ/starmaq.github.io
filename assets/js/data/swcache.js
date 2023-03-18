@@ -43,7 +43,7 @@ const resource = [
 const allowedDomains = [
     
 
-    'starmaq.github.io',
+    'localhost:4000',
 
     
 
