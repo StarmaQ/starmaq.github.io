@@ -1,0 +1,60 @@
+
+
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <id>https://starmaq.github.io/</id>
+  <title>starmaq's blog</title>
+  <subtitle>A minimal, responsive, and powerful Jekyll theme for presenting professional writing.</subtitle>
+  <updated>2023-03-18T10:45:15+01:00</updated>
+  <author>
+    <name>starmaq</name>
+    <uri>https://starmaq.github.io/</uri>
+  </author>
+  <link rel="self" type="application/atom+xml" href="https://starmaq.github.io/feed.xml"/>
+  <link rel="alternate" type="text/html" hreflang="en"
+    href="https://starmaq.github.io/"/>
+  <generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator>
+  <rights> © 2023 starmaq </rights>
+  <icon>/assets/img/favicons/favicon.ico</icon>
+  <logo>/assets/img/favicons/favicon-96x96.png</logo>
+
+
+  
+  <entry>
+    <title>Lerping</title>
+    <link href="https://starmaq.github.io/posts/yoo/" rel="alternate" type="text/html" title="Lerping" />
+    <published>2023-03-15T00:00:00+01:00</published>
+  
+    <updated>2023-03-15T00:00:00+01:00</updated>
+  
+    <id>https://starmaq.github.io/posts/yoo/</id>
+    <content src="https://starmaq.github.io/posts/yoo/" />
+    <author>
+      <name>starmaq</name>
+    </author>
+
+  
+    
+    <category term="aee" />
+    
+    <category term="aeee" />
+    
+  
+
+  
+    <summary>
+      
+
+
+
+
+
+      
+
+    </summary>
+  
+
+  </entry>
+
+</feed>
+
+
