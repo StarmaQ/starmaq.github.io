@@ -4,7 +4,7 @@
   <id>https://starmaq.github.io/</id>
   <title>starmaq's blog</title>
   <subtitle>A minimal, responsive, and powerful Jekyll theme for presenting professional writing.</subtitle>
-  <updated>2023-03-18T21:55:47+01:00</updated>
+  <updated>2023-03-20T00:19:11+01:00</updated>
   <author>
     <name>starmaq</name>
     <uri>https://starmaq.github.io/</uri>
@@ -17,43 +17,6 @@
   <icon>/assets/img/favicons/favicon.ico</icon>
   <logo>/assets/img/favicons/favicon-96x96.png</logo>
 
-
-  
-  <entry>
-    <title>Lerping</title>
-    <link href="https://starmaq.github.io/posts/yoo/" rel="alternate" type="text/html" title="Lerping" />
-    <published>2023-03-15T00:00:00+01:00</published>
-  
-    <updated>2023-03-15T00:00:00+01:00</updated>
-  
-    <id>https://starmaq.github.io/posts/yoo/</id>
-    <content src="https://starmaq.github.io/posts/yoo/" />
-    <author>
-      <name>starmaq</name>
-    </author>
-
-  
-    
-    <category term="aee" />
-    
-    <category term="aeee" />
-    
-  
-
-  
-    <summary>
-      
-
-
-
-
-
-      
-
-    </summary>
-  
-
-  </entry>
 
   
   <entry>
@@ -85,6 +48,40 @@
 
       
 
+    </summary>
+  
+
+  </entry>
+
+  
+  <entry>
+    <title>Vehicle Rigs: Cars, Planes, Helicopters, and Boats</title>
+    <link href="https://starmaq.github.io/posts/Vehicles/" rel="alternate" type="text/html" title="Vehicle Rigs: Cars, Planes, Helicopters, and Boats" />
+    <published>2023-03-15T00:00:00+01:00</published>
+  
+    <updated>2023-03-15T00:00:00+01:00</updated>
+  
+    <id>https://starmaq.github.io/posts/Vehicles/</id>
+    <content src="https://starmaq.github.io/posts/Vehicles/" />
+    <author>
+      <name>starmaq</name>
+    </author>
+
+  
+    
+    <category term="Creations" />
+    
+  
+
+  
+    <summary>
+      
+
+
+
+
+
+      I feel like this is one of those common creations a developer wishes to create: primarily a car rig, and then all sorts of fun things, such as a place. Yet I don’t think it’s that easy to create something beautiful and that works well for each of them, with varying difficulties. Throughought my adventure, it took a lot of fiddling, tweaking with Roblox’s physics, trying out a crap ton of differ...
     </summary>
   
 
