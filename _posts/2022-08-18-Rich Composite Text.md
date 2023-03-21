@@ -27,31 +27,31 @@ And it works perfectly! It'll scale well, and it'll match the exact size and bou
 It could be used for very immersive dialogue, showing more info on a shop, intriguing the player with cool effects, etc.
 
 ```lua
-    local UserInterfaceController = Knit.GetController("UserInterfaceController")
-	local TextLabel = PlayerGui:WaitForChild("ScreenGui").TextLabel2
+local UserInterfaceController = Knit.GetController("UserInterfaceController")
+local TextLabel = PlayerGui:WaitForChild("ScreenGui").TextLabel2
 
-	local elements = {}
-	local ViewportComponent = require(UIComponents.ViewportComponent)
+local elements = {}
+local ViewportComponent = require(UIComponents.ViewportComponent)
 
-	TextLabel.Text = TextLabel.Text:gsub("()<(.-)>", function(index, itemId)
-		table.insert(elements, {Index = index, Element = ViewportComponent(ItemController:GetItemById(itemId).Model:Clone())})  -- here I insert item icons depending on where they pop up in the string
-		return "" 
-	end)
+TextLabel.Text = TextLabel.Text:gsub("()<(.-)>", function(index, itemId)
+	table.insert(elements, {Index = index, Element = ViewportComponent(ItemController:GetItemById(itemId).Model:Clone())})  -- here I insert item icons depending on where they pop up in the string
+	return "" 
+end)
 
-	local compositeText = UserInterfaceController.CompositeText.new(TextLabel)
-	compositeText.Parent = PlayerGui.ScreenGui
+local compositeText = UserInterfaceController.CompositeText.new(TextLabel)
+compositeText.Parent = PlayerGui.ScreenGui
 
-	local tweenInfo = TweenInfo.new(3, Enum.EasingStyle.Sine, Enum.EasingDirection.Out, 1)
-	compositeText:ApplyEffect(UserInterfaceController.CompositeText.Effects.Lightsweep,49 , 54,{TweenInfo = tweenInfo})
-	compositeText:ApplyEffect(UserInterfaceController.CompositeText.Effects.Sparkling, 49 , 51,{TweenInfo = tweenInfo, Image = "http://www.roblox.com/asset/?id=10590233339", Rate = 1.2})
-	compositeText:ApplyEffect(UserInterfaceController.CompositeText.Effects.ApplyProperties, 49 , 53 ,{TextColor3 = Color3.fromRGB(255, 219, 11)})
-	compositeText:ApplyEffect(UserInterfaceController.CompositeText.Effects.Particles, 10 , 12,{TweenInfo = tweenInfo, Image = "http://www.roblox.com/asset/?id=10022661879"})
-	compositeText:ApplyEffect(UserInterfaceController.CompositeText.Effects.ApplyProperties, 10 , 12 ,{TextColor3 = Color3.fromRGB(11, 198, 255)})
-    -- applying some effects
+local tweenInfo = TweenInfo.new(3, Enum.EasingStyle.Sine, Enum.EasingDirection.Out, 1)
+compositeText:ApplyEffect(UserInterfaceController.CompositeText.Effects.Lightsweep,49 , 54,{TweenInfo = tweenInfo})
+compositeText:ApplyEffect(UserInterfaceController.CompositeText.Effects.Sparkling, 49 , 51,{TweenInfo = tweenInfo, Image = "http://www.roblox.com/asset/?id=10590233339", Rate = 1.2})
+compositeText:ApplyEffect(UserInterfaceController.CompositeText.Effects.ApplyProperties, 49 , 53 ,{TextColor3 = Color3.fromRGB(255, 219, 11)})
+compositeText:ApplyEffect(UserInterfaceController.CompositeText.Effects.Particles, 10 , 12,{TweenInfo = tweenInfo, Image = "http://www.roblox.com/asset/?id=10022661879"})
+compositeText:ApplyEffect(UserInterfaceController.CompositeText.Effects.ApplyProperties, 10 , 12 ,{TextColor3 = Color3.fromRGB(11, 198, 255)})
+-- applying some effects
 
-	for _, element in pairs(elements) do
-		compositeText:AddElement(element.Element, element.Index)
-	end]]
+for _, element in pairs(elements) do
+	compositeText:AddElement(element.Element, element.Index)
+end
 ```
 
 After making this cleaner and easier to use I might make it public.
