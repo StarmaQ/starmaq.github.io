@@ -4,7 +4,7 @@
     "title": "Zeno's Lerp",
     "url": "/posts/Zeno's-Lerp/",
     "categories": "Problem Solving",
-    "tags": "",
+    "tags": "Roblox",
     "date": "2023-03-15 00:00:00 +0100",
     
 
@@ -13,8 +13,8 @@
 
 
     
-    "snippet": "",
-    "content": ""
+    "snippet": "I present to you this rather uninteresting problem, yet very common I found out recently! Suppose you have a moving object, and you want to smoothly transition your camera towards some offsett from...",
+    "content": "I present to you this rather uninteresting problem, yet very common I found out recently! Suppose you have a moving object, and you want to smoothly transition your camera towards some offsett from its position. The target position is constantly moving, and the problem arises when the target position changes faster than the object moving towards it, or the impossibility of checking whether it reached it, due to the error constant error between the two.I present to you, the Zeno Lerp! (that I shamelessly stole!)local function ZenoLerp(a, b, fraction, deltaTime)    local f = 1.0 - math.pow(1.0 - fraction, deltaTime)    return variableA:Lerp(variableB, f)endlocal A = workspace.Alocal B = workspace.Bgame:GetService(\"RunService\").RenderStepped:Connect(function(dt)    local a, b = A.CFrame, B.CFrame    B.CFrame = SmoothLerp(b, a - Vector3.new(8, 0, 0), 1/6, dt)end)This lerp follows the same idea as Zeno’s paradox, you get to a distination by moving $\\frac{1}{2}$ of the distance left to travel, except here we generalize it by moving $\\frac{1}{x}$ the way each time, (e.g. $\\frac{1}{6}$). No need to explain the black magic behind the function, it’s a black box. I guess it ends up catching up to the changing target position because the error between the two gets super small eventually?Here is the behavior, it’ll magically catch up to the target position:But there is an even simpler solution: just lerp a first number value from 0 to 1, then lerp the CFrame and pass that number value each tile. The value is guaranteed to get to 1, so the CFrame will eventually be equal to the target CFrame, which is what we’re looking for.local function lerp(a,b,t) return a * (1-t) + b * t endlocal elapsedTime, totalTime = 0, 4local A = workspace.Alocal B = workspace.Bgame:GetService(\"RunService\").RenderStepped:Connect(function(dt)    elapsedTime += dt    local alpha = math.min(elapsedTime/totalTime, 1)    B.CFrame = B.CFrame:lerp(A.CFrame - Vector3.new(8, 0, 0), alpha)end)And also works like a charm, and interestingly different:Right so to the interesting part, I stumbled upon this problem when I wanted to add an option to my cars that makes the camera transition to their front or back depending on direction. I had to lerp the camera as the car was moving. Now the cool zeno lerp function did this:You can see it didn’t do a good job, it didn’t catch up to the moving car, it just jittered weirdly and I had to just roughly set the position to the target position after some threshold.The second simpler solution worked fine though.So uh what did we learn? If a solution is good on paper it might not always work, always look for something simpler.Why did I name the post after the failed solution? Because it had a good name."
   },
   
   {
@@ -32,6 +32,57 @@
     
     "snippet": "I feel like this is one of those common creations a developer wishes to create: primarily a car rig, and then all sorts of fun things, such as a place. Yet I don’t think it’s that easy to create so...",
     "content": "I feel like this is one of those common creations a developer wishes to create: primarily a car rig, and then all sorts of fun things, such as a place. Yet I don’t think it’s that easy to create something beautiful and that works well for each of them, with varying difficulties. Throughought my adventure, it took a lot of fiddling, tweaking with Roblox’s physics, trying out a crap ton of different ideas, and searching deep online, and in Discords, for other peoples’ help and prior experience on the subject. To be honest, resources were scarce. I relied on a couple of toolbox models, and some youtube videos, specifically for the car rig, before I figured out something nice (quite honestly, by mere luck and the power of trial and error).All models and VFX displayed are made respectively by @Viewported and @LuaScripts! I did the model rigging, and VFX scripting additionally.CarsFunnily enough, the simplest and most basic one was the hardest one to get right! Vehicles were tedious, and harder than all the other types of vehicles I made, for the sole reason of the way they move. They weren’t simply moved by some central BodyPosition that controlled everything, they relied on the wheels and their friction with the ground, as they rolled using the CylindricalConstraint (which should be your go-to!). This meant (ackermann) steering, suspension, and most horrifyingly collision, were not trivial problems. You had to get the PhysicalProperties right, the SpringConstraint for the suspensions correctly tuned, and finding the best configurations for your central mass part, that consituted the mass of the car as everything else was massless.The end product was this:Look at the smooth suspension and smooth collision! There was even a drift hotkey, with a cool effect, although the drifting is kind of busted. It doens’t quite drift, it’ll only start steering faster. I gave up on drifting, I just couldn’t do it!I love the way I structured the way cars (and all the vehicles consequently) worked. A CarController (I was using Knit), that created a CarClass, which initialized the virtual side of every physical car, and updated its physics configurations by exposing a CarClass:Update(dt), that was used by a CarHandler, which took care of all the physical car objects, their player interaction, kept track of their destruction, and took care of any side things that weren’t included in the :Update(dt) method (some VFX for example, especially for planes). I didn’t use VehicleSeat, and wanted to write the SteerFloat logic myself (and painfully the camera code), and updated the CylindricalConstraints’s rotation accordingly with some ackermann steering.I also learned a lot of things about Roblox physics during my playtime with this. I learned to never set any sort of MaxForce/MaxTorque property to Vector3.new(math.huge, math.huge, math.huge), and instead set it to some reasonable value in the thousands, after some trial and error, else it’ll cause all sort of wobbly collision issues. The significance of the center of mass of your assembly, the importance of friction…It even works really well with bigger vehicles! After some different configurations for the mass part.I won’t yap as much for the next vehicles, since almost the same applies.PlanesAnything but the cars was easy! All I needed was a BodyPosition, and a BodyGyro, and just do some acceleration/steering logic on my :Update(dt) method. Planes behaved differently, as you didn’t need to continuously press forward to move, you just accelerated and decelerated. Additional raycasting was done to prevent stuff like sinking into the ground, it also lands very well but it’s not shown in the video. It also nudged along its yaw and roll as it steered and it went up.What was exceptional about this was the very cool effects @LuaScripts made for the plane, and the way I beautifuly programmed them to interact with the plane! There was an effect around the nose of the plane when you were moving at max speed. I made the front wheel, and wing thingies move accordingly to your actions. Flying it was generally fun!HelicopterThese ones were almost identical to the planes, with the same setup, along with going up and down.The hard part about this was the rope! I didn’t end up finishing that part, it was tedious. I tried a handful of solutions:  A bare rope constraint, nope, the player flew all over the place, this is after making him massless  A rope constraint, with a rod constraint, which I discovered were useful, but this bugged out and didn’t work well, the length limiting part of this constraint annoyed me while I only needed its angle limitation  Best solution I got was a body position that I manually set the position of to be offsetted from the helicopter’s bottom.BoatBoats were fun! They’re unusual vehicles that you don’t see often. I had fun programming their buouncy, and their steering is fun. I had to elevate the boat depending on sea level, and how much of their body should be sumberged into water.What was fun about this was the little tubing behind the boat! It interacted beautifully with the boat, steered accordingly to the main ship’s movement, and stopped very well when it did. I had fun using the rod constraint for this one.The boat also interacted wonderfully with collision, and moved realisticly when on ground."
+  },
+  
+  {
+    "title": "Superliminal Illusion",
+    "url": "/posts/Superliminal-Illusion/",
+    "categories": "Creations",
+    "tags": "Roblox",
+    "date": "2023-01-10 00:00:00 +0100",
+    
+
+
+
+
+
+    
+    "snippet": "As part of the 2023 VectorThree game jam, whose theme was “looks are deceiving”, I decided to implement many illusion mechanics from many games, namely Superliminal, one of the amazing illusions th...",
+    "content": "As part of the 2023 VectorThree game jam, whose theme was “looks are deceiving”, I decided to implement many illusion mechanics from many games, namely Superliminal, one of the amazing illusions that I wanted to replicate was this one, a “trompe-d’œil”:I basically used EgoMoose’s epic portal module, by placing the object behind the three walls, seeing their image from the other side, disabling the portals and hardcoding their cameras’ position. That way, it’ll align only if you’re at a certain position, I also save and hardcode that CFrame, and do some checks off of it to see if the item can be collected. Cool!"
+  },
+  
+  {
+    "title": "Rich Composite Text",
+    "url": "/posts/Rich-Composite-Text/",
+    "categories": "Creations",
+    "tags": "Roblox",
+    "date": "2022-08-17 00:00:00 +0100",
+    
+
+
+
+
+
+    
+    "snippet": "I made this really cool module that let’s you customize your text, or precisely parts of your text, such that they have custom properties, or even custom effects, and look this beautiful:It can als...",
+    "content": "I made this really cool module that let’s you customize your text, or precisely parts of your text, such that they have custom properties, or even custom effects, and look this beautiful:It can also have tags that get filled in later at runtime, for example to show a certain item:At the moment it’s as capable as Defaultio’s Rich Text module, minus the easier use of interpreting tags in text, plus more control and extensibility.And it works perfectly! It’ll scale well, and it’ll match the exact size and boundaries the original text had. It also doesn’t eat performance at all.It could be used for very immersive dialogue, showing more info on a shop, intriguing the player with cool effects, etc.    local UserInterfaceController = Knit.GetController(\"UserInterfaceController\")\tlocal TextLabel = PlayerGui:WaitForChild(\"ScreenGui\").TextLabel2\tlocal elements = {}\tlocal ViewportComponent = require(UIComponents.ViewportComponent)\tTextLabel.Text = TextLabel.Text:gsub(\"()&lt;(.-)&gt;\", function(index, itemId)\t\ttable.insert(elements, {Index = index, Element = ViewportComponent(ItemController:GetItemById(itemId).Model:Clone())})  -- here I insert item icons depending on where they pop up in the string\t\treturn \"\" \tend)\tlocal compositeText = UserInterfaceController.CompositeText.new(TextLabel)\tcompositeText.Parent = PlayerGui.ScreenGui\tlocal tweenInfo = TweenInfo.new(3, Enum.EasingStyle.Sine, Enum.EasingDirection.Out, 1)\tcompositeText:ApplyEffect(UserInterfaceController.CompositeText.Effects.Lightsweep,49 , 54,{TweenInfo = tweenInfo})\tcompositeText:ApplyEffect(UserInterfaceController.CompositeText.Effects.Sparkling, 49 , 51,{TweenInfo = tweenInfo, Image = \"http://www.roblox.com/asset/?id=10590233339\", Rate = 1.2})\tcompositeText:ApplyEffect(UserInterfaceController.CompositeText.Effects.ApplyProperties, 49 , 53 ,{TextColor3 = Color3.fromRGB(255, 219, 11)})\tcompositeText:ApplyEffect(UserInterfaceController.CompositeText.Effects.Particles, 10 , 12,{TweenInfo = tweenInfo, Image = \"http://www.roblox.com/asset/?id=10022661879\"})\tcompositeText:ApplyEffect(UserInterfaceController.CompositeText.Effects.ApplyProperties, 10 , 12 ,{TextColor3 = Color3.fromRGB(11, 198, 255)})    -- applying some effects\tfor _, element in pairs(elements) do\t\tcompositeText:AddElement(element.Element, element.Index)\tend]]After making this cleaner and easier to use I might make it public."
+  },
+  
+  {
+    "title": "Rope Simulation",
+    "url": "/posts/Rope-Simulation/",
+    "categories": "Creations",
+    "tags": "Roblox",
+    "date": "2022-01-09 00:00:00 +0100",
+    
+
+
+
+
+
+    
+    "snippet": "Rope simulation! My goal was more stable and controllable ropes, and as a final goal even implementing a grappling hook. I didn’t quite get there, and only settled with a collidable moving rope. It...",
+    "content": "Rope simulation! My goal was more stable and controllable ropes, and as a final goal even implementing a grappling hook. I didn’t quite get there, and only settled with a collidable moving rope. It was mostly just Verlet Integration.It works well and doens’t have a big performance impact, but it is limited, it’s client sided, and it won’t handle many cases well."
   }
   
 ]
