@@ -4,7 +4,7 @@
   <id>https://starmaq.github.io/</id>
   <title>starmaq's blog</title>
   <subtitle>A minimal, responsive, and powerful Jekyll theme for presenting professional writing.</subtitle>
-  <updated>2023-03-20T00:19:11+01:00</updated>
+  <updated>2023-03-21T01:00:29+01:00</updated>
   <author>
     <name>starmaq</name>
     <uri>https://starmaq.github.io/</uri>
@@ -46,8 +46,7 @@
 
 
 
-      
-
+      I present to you this rather uninteresting problem, yet very common I found out recently! Suppose you have a moving object, and you want to smoothly transition your camera towards some offsett from its position. The target position is constantly moving, and the problem arises when the target position changes faster than the object moving towards it, or the impossibility of checking whether it r...
     </summary>
   
 
@@ -82,6 +81,128 @@
 
 
       I feel like this is one of those common creations a developer wishes to create: primarily a car rig, and then all sorts of fun things, such as a place. Yet I don’t think it’s that easy to create something beautiful and that works well for each of them, with varying difficulties. Throughought my adventure, it took a lot of fiddling, tweaking with Roblox’s physics, trying out a crap ton of differ...
+    </summary>
+  
+
+  </entry>
+
+  
+  <entry>
+    <title>Superliminal Illusion</title>
+    <link href="https://starmaq.github.io/posts/Superliminal-Illusion/" rel="alternate" type="text/html" title="Superliminal Illusion" />
+    <published>2023-01-10T00:00:00+01:00</published>
+  
+    <updated>2023-01-10T00:00:00+01:00</updated>
+  
+    <id>https://starmaq.github.io/posts/Superliminal-Illusion/</id>
+    <content src="https://starmaq.github.io/posts/Superliminal-Illusion/" />
+    <author>
+      <name>starmaq</name>
+    </author>
+
+  
+    
+    <category term="Creations" />
+    
+  
+
+  
+    <summary>
+      
+
+
+
+
+
+      As part of the 2023 VectorThree game jam, whose theme was “looks are deceiving”, I decided to implement many illusion mechanics from many games, namely Superliminal, one of the amazing illusions that I wanted to replicate was this one, a “trompe-d’œil”:
+
+
+
+I basically used EgoMoose’s epic portal module, by placing the object behind the three walls, seeing their image from the other side, disabl...
+    </summary>
+  
+
+  </entry>
+
+  
+  <entry>
+    <title>Rich Composite Text</title>
+    <link href="https://starmaq.github.io/posts/Rich-Composite-Text/" rel="alternate" type="text/html" title="Rich Composite Text" />
+    <published>2022-08-17T00:00:00+01:00</published>
+  
+    <updated>2022-08-17T00:00:00+01:00</updated>
+  
+    <id>https://starmaq.github.io/posts/Rich-Composite-Text/</id>
+    <content src="https://starmaq.github.io/posts/Rich-Composite-Text/" />
+    <author>
+      <name>starmaq</name>
+    </author>
+
+  
+    
+    <category term="Creations" />
+    
+  
+
+  
+    <summary>
+      
+
+
+
+
+
+      I made this really cool module that let’s you customize your text, or precisely parts of your text, such that they have custom properties, or even custom effects, and look this beautiful:
+
+
+
+
+
+It can also have tags that get filled in later at runtime, for example to show a certain item:
+
+
+
+
+At the moment it’s as capable as Defaultio’s Rich Text module, minus the easier use of interpreting tags ...
+    </summary>
+  
+
+  </entry>
+
+  
+  <entry>
+    <title>Rope Simulation</title>
+    <link href="https://starmaq.github.io/posts/Rope-Simulation/" rel="alternate" type="text/html" title="Rope Simulation" />
+    <published>2022-01-09T00:00:00+01:00</published>
+  
+    <updated>2022-01-09T00:00:00+01:00</updated>
+  
+    <id>https://starmaq.github.io/posts/Rope-Simulation/</id>
+    <content src="https://starmaq.github.io/posts/Rope-Simulation/" />
+    <author>
+      <name>starmaq</name>
+    </author>
+
+  
+    
+    <category term="Creations" />
+    
+  
+
+  
+    <summary>
+      
+
+
+
+
+
+      Rope simulation! My goal was more stable and controllable ropes, and as a final goal even implementing a grappling hook. I didn’t quite get there, and only settled with a collidable moving rope. It was mostly just Verlet Integration.
+
+
+
+It works well and doens’t have a big performance impact, but it is limited, it’s client sided, and it won’t handle many cases well.
+
     </summary>
   
 
