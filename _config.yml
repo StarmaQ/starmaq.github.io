@@ -9,7 +9,6 @@ repository          : YoussefRaafatNasry/portfolYOU     # Change to <your-userna
 remote_theme        : YoussefRaafatNasry/portfolYOU
 open_new_tab        : true                             # Opens external URLs in new tab (works for posts, projects and navbar only)
 
-
 ### Plugins ###
 plugins:
   - jemoji
@@ -85,6 +84,10 @@ buymeacoffee:
 
 ### Defaults for collections ###
 defaults:
+  - scope:
+      path: ""
+    values:
+      cache_control: "public, max-age=300" # Adjust the max-age value as needed
   - scope:
       path: ""
       type: "projects"
