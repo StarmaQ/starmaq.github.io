@@ -1,17 +1,70 @@
-- title: Student, Harvard CS
-  from: 2014
-  to: 2018
-  description: Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-               sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-               Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-               nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-               reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+- title: Education Content Creation
+  from: 2019
+  to: Present
+  description:           <p>I have created many resources for the developing community to use, raging from articles, to tutorials, and even some modules. I have been an active member of the <a href="https://devforum.roblox.com/u/starmaq/summary">devforum</a>, and made a reputation for myself there. My article can be found all <a href="https://github.com/StarmaQ/Articles">here</a>.</p>
 
-- title: Software Engineer, Google, UK
-  from: 2018
-  to: present
-  description: Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-               sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-               Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-               nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-               reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+
+- title: (2X) Roblox Developer Conference Attendee
+  from: 2022
+  to: 2023
+  description:           <p>I have been invited to both RDC2022 and RDC2023, virtually and physically, among one of the most prominent developers in the community. I was only able to attend virtually, and even competed in the RDC2022 GameJam!</p>
+
+
+- title:           <h2>Developer at MakerCamp</h2>
+  from: 2024
+  to: Present
+  description:                     <p>One of my favorite experiences! I had the chance to fully develop a game for our client ENI, and their ALT Station, which promotes renewable energy and Italian cuisine! <a href="https://makercamp.it/en/">MakerCamp</a></p>
+
+- title:          <h2>Commissions Developer at Paradigm Games</h2>
+  from: 2021
+  to: 2022
+  description:                    <p>Programmed parts of their two upcoming games, Circus Trip 2 and Gameshow. <a href="https://www.roblox.com/groups/3010007/Paradigm-Games#!/affiliates">Paradigm Games</a></p>
+
+
+
+- title:          <h2>Developer at Vue Interactive</h2>
+  from: 2023
+  to: 2024
+  description:                                        <p>Having released the game Money World! for them, also worked a small bit on a number of their projects, and programmed a big portion of their upcoming horror game. <a href="https://www.roblox.com/groups/7146062/Vue-Interactive#!/about">Vue Interactive</a></p>
+
+
+
+
+- title:          <h2>Developer at Hyperpenguin</h2>
+  from: 2022
+  to: 2023
+  description:                              <p>Although this experience ended terribly for all the people involved, thanks to the scale of the project, I learned lots of news things and developed my skills heavily. <a href="https://www.linkedin.com/company/hyperpenguin">HyperPenguin</a></p>
+
+
+- title:          Winner of the RSA 2021 Game Jam!
+  from: 2021
+  to: 2021
+  description:  I have been a very active and helpful member of the Roblox Scripting Assistance, having learned so much there, and even helped with the server's moderation at some point, and judging in many of their game jams. And as one of my achievements there, I had won the first place prize along with @cowsoncows during their 2021 "Spring" theme game jam. Our game Thinking With Springs! which was made in a week was a fun puzzle game with very witty and creative spring mechanics.
+
+
+
+
+
+
+- title:                    <h2>Runner up in the National Competition for Mobile Apps!</h2>
+
+  from: 2024
+  to: 2024
+  description:                                        <p>Developed a touristic guide mobile app.</p>
+
+
+
+
+- title:                              <h2>Runner up in Must University's Hackathon4Health</h2>
+
+  from: 2024
+  to: 2024
+  description:                                                 <p>Combined video games and AI to develop a solution that helps the diagnosis of children that have ADHD, in only 24 hours! <a href="https://www.mustuniversity.tn/">Must University</a></p>
+
+
+
+- title:                                      <h2>Filmmaker</h2>
+
+  from: 2024
+  to: 2024
+  description:                                                           <p>Having directed and edited a handful of short movies, some of which won local all around my country Tunisia! I am also a member of the group responsible for hosting a yearly cinema festival, which has seen success the past two years with hundreds attending, with the presence of some acclaimed people.</p>

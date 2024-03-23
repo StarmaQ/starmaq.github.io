@@ -1,0 +1,11 @@
+- name: Communication
+  percentage: 100
+  color: info
+
+- name: Creativity
+  percentage: 100
+  color: success
+
+- name: Problem Solving
+  percentage: 90
+  color: info
