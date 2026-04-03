@@ -1,0 +1,137 @@
+---
+layout: default
+title: Games
+permalink: /games/
+weight: 2
+---
+
+{% assign total_visits = 0 %}
+{% for game in site.data.games %}
+  {% assign total_visits = total_visits | plus: game.visits %}
+{% endfor %}
+
+{% if total_visits >= 1000000000 %}
+  {% assign compact_tenths = total_visits | divided_by: 100000000 %}
+  {% assign compact_whole = compact_tenths | divided_by: 10 %}
+  {% assign compact_decimal = compact_tenths | modulo: 10 %}
+  {% capture total_compact %}{{ compact_whole }}{% if compact_decimal != 0 %}.{{ compact_decimal }}{% endif %}B+{% endcapture %}
+{% elsif total_visits >= 1000000 %}
+  {% assign compact_tenths = total_visits | divided_by: 100000 %}
+  {% assign compact_whole = compact_tenths | divided_by: 10 %}
+  {% assign compact_decimal = compact_tenths | modulo: 10 %}
+  {% capture total_compact %}{{ compact_whole }}{% if compact_decimal != 0 %}.{{ compact_decimal }}{% endif %}M+{% endcapture %}
+{% elsif total_visits >= 1000 %}
+  {% assign compact_whole = total_visits | divided_by: 1000 %}
+  {% capture total_compact %}{{ compact_whole }}K+{% endcapture %}
+{% else %}
+  {% capture total_compact %}{{ total_visits }}+{% endcapture %}
+{% endif %}
+
+<style>
+  .games-summary {
+    border: 1px solid rgba(0, 123, 255, 0.22);
+    border-radius: 14px;
+    padding: 16px 18px;
+    margin: 0 16px 18px;
+    background: linear-gradient(180deg, rgba(0, 123, 255, 0.08), rgba(0, 123, 255, 0.02));
+  }
+
+  .games-summary-label {
+    font-size: 0.86rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #6c757d;
+    margin-bottom: 6px;
+  }
+
+  .games-summary-value {
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    font-weight: 700;
+    line-height: 1;
+    color: #0d6efd;
+    margin: 0;
+  }
+
+  .games-summary-sub {
+    margin-top: 6px;
+    color: #6c757d;
+    font-size: 0.92rem;
+  }
+
+  .game-visits {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 8px;
+    font-weight: 600;
+    color: #0d6efd;
+  }
+
+  .game-visits-number {
+    font-size: 1.45rem;
+    line-height: 1;
+    font-weight: 800;
+    letter-spacing: 0.01em;
+  }
+
+  .game-visits-label {
+    font-size: 0.84rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #6c757d;
+  }
+
+  .game-visits-unavailable {
+    display: inline-block;
+    font-size: 0.84rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #6c757d;
+  }
+</style>
+
+<div class="games-summary">
+  <h2 class="mb-0">Roblox Games</h2>
+  <p class="games-summary-label">Total Visits</p>
+  <p class="games-summary-value">{{ total_compact }}</p>
+  <p class="games-summary-sub">Across all listed games</p>
+</div>
+
+<div class="card-columns m-3 mt-4">
+  {% for game in site.data.games %}
+  {% if game.visits >= 1000000000 %}
+    {% assign compact_tenths = game.visits | divided_by: 100000000 %}
+    {% assign compact_whole = compact_tenths | divided_by: 10 %}
+    {% assign compact_decimal = compact_tenths | modulo: 10 %}
+    {% capture game_compact %}{{ compact_whole }}{% if compact_decimal != 0 %}.{{ compact_decimal }}{% endif %}B+{% endcapture %}
+  {% elsif game.visits >= 1000000 %}
+    {% assign compact_tenths = game.visits | divided_by: 100000 %}
+    {% assign compact_whole = compact_tenths | divided_by: 10 %}
+    {% assign compact_decimal = compact_tenths | modulo: 10 %}
+    {% capture game_compact %}{{ compact_whole }}{% if compact_decimal != 0 %}.{{ compact_decimal }}{% endif %}M+{% endcapture %}
+  {% elsif game.visits >= 1000 %}
+    {% assign compact_whole = game.visits | divided_by: 1000 %}
+    {% capture game_compact %}{{ compact_whole }}K+{% endcapture %}
+  {% else %}
+    {% capture game_compact %}{{ game.visits }}+{% endcapture %}
+  {% endif %}
+
+  <div class="wow animated fadeIn" data-wow-delay=".15s">
+    <a href="{{ game.url }}" class="project card text-themed" target="_blank" rel="noopener noreferrer">
+      <img class="card-img-top" src="{{ game.image }}" alt="{{ game.title }}" />
+      <div class="card-body">
+        <h5 class="card-title">{{ game.title }}</h5>
+        {% if game.visits_unavailable %}
+        <p class="card-text mb-0"><span class="game-visits-unavailable">Visits unavailable</span></p>
+        {% else %}
+        <p class="card-text mb-0">
+          <span class="game-visits">
+            <span class="game-visits-number">{{ game_compact }}</span>
+            <span class="game-visits-label">Visits</span>
+          </span>
+        </p>
+        {% endif %}
+      </div>
+    </a>
+  </div>
+  {% endfor %}
+</div>

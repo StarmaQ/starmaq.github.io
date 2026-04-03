@@ -2,7 +2,7 @@
 layout: page
 title: Resume
 permalink: /about/
-weight: 3
+weight: 4
 ---
 
 # **About Me**
